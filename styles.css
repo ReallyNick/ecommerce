@@ -8,6 +8,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .colored__text {
   color: #244c66;
 }
@@ -47,7 +51,8 @@ li {
   list-style-type: none;
 }
 
-.nav__link {
+.nav__link,
+.footer__link {
   margin-left: 16px;
   text-decoration: none;
   font-size: 20px;
@@ -70,6 +75,68 @@ li {
   transition: 0.3s;
   text-decoration: none;
 }
+
+.btn__menu {
+  background-color: transparent;
+  font-size: 40px;
+  text-align: center;
+  border: none;
+  color: #244c66;
+  display: none;
+}
+
+.menu__backdrop {
+  position: absolute;
+  background-color: #242424;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 300ms ease;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.menu--open .menu__backdrop {
+  display: flex;
+  visibility: visible;
+  opacity: 1;
+}
+
+.menu--open {
+  max-height: 100vh;
+  overflow-y: hidden;
+}
+
+.menu__links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu__link {
+  text-decoration: none;
+  color: white;
+  font-size: 40px;
+}
+
+.menu__list {
+  padding: 32px 0;
+}
+
+.btn__menu--close {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  padding: 8px;
+  color: white;
+}
+
+/* LANDING  */
 
 #landing {
   background-color: #d0d2cf;
@@ -108,7 +175,6 @@ h2 {
   margin-bottom: 32px;
   text-align: center;
 }
-
 
 button:active {
   transform: translateY(3px);
@@ -165,13 +231,17 @@ svg {
 }
 
 .container {
-  padding: 0px 0;
+  padding: 56px 0;
 }
 
 .row {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+}
+
+.no-cursor {
+  cursor: not-allowed;
 }
 
 /* HIGHLIGHTS */
@@ -183,8 +253,8 @@ svg {
 
 #highlights:after,
 #highlights:before {
-  background: url("assets/wave.svg");
   content: "";
+  background: url("assets/wave.svg");
   position: absolute;
   width: 100%;
   height: 12vw;
@@ -207,6 +277,7 @@ svg {
 .highlight_wrapper {
   display: flex;
   justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 .highlight {
@@ -214,7 +285,6 @@ svg {
   width: calc(100% / 3);
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
 }
 
@@ -240,9 +310,162 @@ svg {
 .highlight__subtitle {
   font-size: 20px;
   margin-bottom: 24px;
+  text-align: center;
 }
 
-.wave1 {
-  width: 100vw;
-  transform: rotate(180deg);
+/* 
+
+FEATURES 
+
+*/
+
+#features {
+  padding-top: 10vw;
+  background-color: #d0d2cf;
+}
+
+.books {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.book {
+  width: 25%;
+  padding: 24px;
+}
+
+.book__img {
+  max-height: 380px;
+  transition: all 0.5s ease;
+  cursor: no-drop;
+}
+
+.book__img--wrapper {
+  margin-bottom: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+}
+
+.book:hover .book__img {
+  transform: scale(1.02);
+}
+
+.book__title {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.book__title:hover {
+  text-decoration: underline;
+  cursor: no-drop;
+}
+
+.book__ratings {
+  margin-bottom: 8px;
+  color: #eca900;
+  stroke: solid 1px #244c66;
+}
+
+.book__price--normal {
+  text-decoration: line-through;
+  padding-right: 6px;
+  color: #5a5a5a;
+}
+
+.book__price {
+  color: #ff3d3d;
+  font-weight: 700;
+}
+
+/* EXPLORE */
+
+#explore {
+  background-color: #d0d2cf;
+}
+
+.row__column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* FOOTER */
+
+.footer__container {
+  background-color: #929292;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+}
+
+.footer__img {
+  display: flex;
+  padding: 0;
+  width: 150px;
+  margin-bottom: 16px;
+  filter: grayscale(1) invert(1);
+}
+.footer__nav {
+  margin-bottom: 16px;
+}
+
+.footer__link {
+  margin-left: 36px;
+  font-size: small;
+  color: #fff;
+}
+.footer__link:hover {
+  text-decoration: underline;
+}
+
+.footer__copyright {
+  color: #fff;
+  font-size: smaller;
+}
+
+/* SMALL PHONES, TABLETS, LARGE SMARTPHONES  */
+@media (max-width: 768px) {
+  .header__description {
+    padding: 0 24px;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  h2 {
+    font-size: 26px;
+  }
+
+  button {
+    font-size: 18px;
+  }
+
+  .book {
+    width: 50%;
+  }
+}
+
+/* SMALL PHONES, LARGE SMARTPHONES */
+
+@media (max-width: 550px) {
+
+  .nav__links {
+    display: none;
+  }
+
+  .btn__menu {
+    display: block;
+  }
+
+  .highlight {
+    width: 100%;
+  }
+
+  .highlight:not(:last-child) {
+    margin-bottom: 24px;
+  }
 }
